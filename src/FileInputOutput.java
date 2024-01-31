@@ -1,14 +1,42 @@
+import java.io.FileInputStream;
+import java.util.Scanner;
+
 public class FileInputOutput {
 
     public static void main(String[] args) {
-//       1) Open the given file inside src called moviesDataSet.csv
-//       2) Read each row in the dataset
-//       3) Print each row to the screen
-//       4) Print only the name of the movie
-//       5) Add exception handling (try & catch) when needed
-//       6) Close the files after finishing the processing
-//       7) Commit your code and push it to the GitHub
+//
+        FileInputStream file = null;            //this inputStream is for printing all  line
+        FileInputStream Jimmy = null;           //this inputStream is for printing the movie names
 
+        try{
+            file = new FileInputStream("src/moviesDataset.csv");
+        }
+        catch(java.io.FileNotFoundException x){
+            System.out.println("Sorry, no matching file found. Please restart the program");
+            System.exit(1);
+        }
+        Scanner readFile = new Scanner(file);
+        while(readFile.hasNextLine()){
+            String data = readFile.nextLine();
+            System.out.println(data);
+        }
+
+        try{
+            Jimmy = new FileInputStream("src/moviesDataset.csv");
+        }
+        catch(java.io.FileNotFoundException x){
+            System.out.println("Sorry, no matching file found. Please restart the program");
+            System.exit(1);
+        }
+
+        Scanner readFile1 = new Scanner(Jimmy);
+        while(readFile1.hasNextLine()){
+            String data1 = readFile1.nextLine();
+            String[] Array = data1.split(",");
+            System.out.println(Array[2]);
+        }
+
+        readFile.close();
     }
 
 }

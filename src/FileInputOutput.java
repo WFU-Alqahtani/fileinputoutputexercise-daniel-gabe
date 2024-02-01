@@ -13,7 +13,7 @@ public class FileInputOutput {
 
         try {
             myFile = new FileInputStream("moviesDataset.csv");
-            changeFile = new FileOutputStream("moviesDataset.csv",true);
+            changeFile = new FileOutputStream("newFile.csv",true);
         }
         catch (FileNotFoundException nfe){
             System.out.println("File not found");
@@ -32,10 +32,12 @@ public class FileInputOutput {
                 change.println(fail[4]);
             }
             catch(NumberFormatException nfe){
-                System.out.println("NA");
+                change.println("NA");
             }
 
         }
+
+
     fileReader.close();
 
     }
